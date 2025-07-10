@@ -1,4 +1,4 @@
-import logo from "../../../images/aound.png";
+import logo from "../../../images/logo.png";
 
 function Header() {
   return (

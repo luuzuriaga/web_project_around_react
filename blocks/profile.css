@@ -78,7 +78,7 @@
   margin: 0;
   font-family: "Inter";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 42px;
   line-height: 48px;
   color: #ffffff;
@@ -89,7 +89,7 @@
 .profile__header-button {
   width: 12px;
   height: 22px;
-  background: url("/images/Edit\ Button.png");
+  background: url("./images/Edit Button.png");
   background-size: cover;
   box-sizing: content-box;
   border: none;
@@ -125,6 +125,9 @@
   background-color: black;
   color: #fff;
   border: 1px solid #fff;
+  font-size: 30px; /* Tamaño del "+"*/
+  line-height: center; /* Centra verticalmente el "+" */
+  text-align: center; /* Centra horizontalmente */
 }
 
 .profile__button-add:hover {
@@ -176,6 +179,11 @@
     display: flex;
     flex-direction: column;
   }
+  .profile__avatar-container {
+    margin: 0 auto; /* Centrado horizontal */
+    display: block; /* Asegura que no haya conflictos con flex */
+  }
+
   .profile__avatar {
     margin: 0 auto;
   }
@@ -183,18 +191,22 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    gap: 20px; /* Reducir espacio entre avatar e info */
   }
   .profile__info {
     display: flex;
     flex-direction: column;
   }
   .profile__header {
+    flex-direction: row; /* Cambia de column a row */
+    justify-content: center; /* Centra el título y el botón */
+    align-items: center; /* Alinea verticalmente */
     gap: 10px;
   }
   .profile__header-title {
     font-family: "Inter";
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 22px;
     line-height: 27px;
     text-align: center;
