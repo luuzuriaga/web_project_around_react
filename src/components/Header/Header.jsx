@@ -1,11 +1,10 @@
-import React from 'react';
-import logo from '../../images/logo.svg';
-
+import logo from "../../../images/logo.png";
 
 function Header() {
   return (
     <header className="header">
-      <img className="logo" alt="Around the US logo" src={logo} />
+      <img src={logo} alt="Logo Titulo" className="header__image" />
+      <img src="./images/Line.png" alt="Linea" className="header__image-line" />
     </header>
   );
 }
