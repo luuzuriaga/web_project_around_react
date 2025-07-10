@@ -26,6 +26,7 @@
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   margin: 0 auto;
+  
 }
 
 .popup__new {
@@ -51,6 +52,8 @@
 
 .popup__close-button {
   width: 32px;
+  position: flex;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); /* Opcional: añade sombra para mejor visibilidad */
 }
 
 .popup__close:hover {
@@ -121,29 +124,18 @@
 }
 
 .popup__modal {
-  /* display: flex;
-  flex-direction: column;
   position: relative;
-  background-color: transparent;
-  max-width: 50%; */
-  /* position: relative; */
-  max-width: 430px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  /* background: #ffffff; */
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
+  max-width: 75vw; /* Ocupa el 75% del ancho de la pantalla */
+  width: auto; /* Ancho flexible */
   margin: 0 auto;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .popup__modal-button {
-  position: absolute;
-  top: -81px;
-  right: -43px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
+  top: -40px;
+  right: 0;
   z-index: 2;
 }
 
@@ -152,7 +144,11 @@
 }
 
 .popup__modal-content {
-  height: 74vh;
+  max-width: 100%;
+  max-height: 75vh; /* Altura máxima del 75% de la pantalla */
+  width: auto; /* Ancho flexible según la imagen */
+  height: auto;
+  object-fit: contain; /* Mantiene proporciones sin recortar */
 }
 
 .popup__modal-description {

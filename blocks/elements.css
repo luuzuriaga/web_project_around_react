@@ -130,3 +130,34 @@
     font-size: 20px;
   }
 }
+
+@media screen and (max-width: 320px) {
+
+  .elements {
+    padding: 0 10px; /* Reduce el padding en móvil */
+  }
+  .elements__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 1 columna en móvil */
+    gap: 20px; /* Espacio entre tarjetas */
+    width: 100%;
+    margin-top: 36px;
+  }
+
+  .elements__group {
+    width: 100%; /* Ocupa el 100% del contenedor padre */
+    max-width: 282px; /* Pero no más de 282px */
+    height: auto; /* Altura flexible */
+    aspect-ratio: 282/361; /* Mantiene proporción (ancho/alto) */
+  }
+
+  .elements__photo {
+    width: 100%;
+    height: 282px;
+    object-fit: cover; /* Recorta la imagen manteniendo proporción */
+  }
+
+  .elements__footer-name {
+    font-size: 20px;
+  }
+}
