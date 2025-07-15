@@ -178,6 +178,7 @@
     max-width: 282px;
     display: flex;
     flex-direction: column;
+    align-items: center;;
   }
   .profile__avatar-container {
     margin: 0 auto; /* Centrado horizontal */

@@ -6,8 +6,8 @@ import EditProfile from "./Popup/EditProfile/EditProfile.jsx";
 import Popup from "./Popup/Popup.jsx";
 import Card from "../../components/Cards/Cards.jsx";
 import ImagePopup from "./Popup/ImagePopup/ImagePopup.jsx";
+import RemoveCard from "./Popup/RemoveCard/RemoveCard.jsx";
 import { useCurrentUserContext } from "../../contexts/CurrentUserContext";
-
 
 function Main(props) {
   const {
@@ -22,21 +22,37 @@ function Main(props) {
 
   const userContext = useCurrentUserContext();
 
+  // Configuraciones de los popups
   const newCardPopup = {
     title: "Nuevo lugar",
     Children: <NewCard onAddPlaceSubmit={onAddPlaceSubmit} />,
   };
+
   const editAvatarPopup = {
     title: "Cambiar foto de perfil",
     Children: <EditAvatar onClose={onClosePopup} />,
   };
+
   const editProfilePopup = {
     title: "Editar perfil",
     Children: <EditProfile onClose={onClosePopup} />,
   };
 
+  const removeCardPopup = {
+    type: "removeCard",
+    title: "¿Estás seguro?",
+  };
+
+  const handleConfirmDelete = () => {
+    if (popup?.cardToDelete) {
+      onCardDelete(popup.cardToDelete);
+    }
+    onClosePopup();
+  };
+
   return (
     <main className="content">
+      {/* Sección del perfil */}
       <section className="profile">
         <div className="profile__content">
           <div className="profile__avatar-container">
@@ -44,7 +60,6 @@ function Main(props) {
               src={userContext?.currentUser?.avatar}
               alt="Foto Avatar"
               className="profile__avatar"
-              id="profile-avatar"
             />
             <button
               className="profile__avatar-button"
@@ -59,9 +74,10 @@ function Main(props) {
               />
             </button>
           </div>
+          
           <div className="profile__info">
             <div className="profile__header">
-              <h1 className="profile__header-title" id="profile-name">
+              <h1 className="profile__header-title">
                 {userContext?.isLoadingUser
                   ? "Cargando..."
                   : userContext?.currentUser?.name}
@@ -73,48 +89,64 @@ function Main(props) {
                 onClick={() => onOpenPopup(editProfilePopup)}
               ></button>
             </div>
-            <p className="profile__description" id="profile-description">
+            <p className="profile__description">
               {userContext?.isLoadingUser
                 ? "Cargando..."
                 : userContext?.currentUser?.about}
             </p>
           </div>
         </div>
-        <div className="profile__button">
-          <button
-            aria-label="Add card"
-            className="profile__button-add"
-            type="button"
-            onClick={() => onOpenPopup(newCardPopup)}
-          >
-            +
-          </button>
-        </div>
+        
+        <button
+          aria-label="Add card"
+          className="profile__button-add"
+          type="button"
+          onClick={() => onOpenPopup(newCardPopup)}
+        >
+          +
+        </button>
       </section>
 
-      {popup && (
-        <Popup onClose={onClosePopup} title={popup.title}>
-          {popup.card && (
-            <ImagePopup card={popup.card} onClose={onClosePopup} />
-          )}
-          {popup.Children}
-        </Popup>
-      )}
+      {/* Manejo de todos los popups */}
 
+{popup && (
+  <Popup onClose={onClosePopup} title={popup.title}>
+    {popup.type === 'removeCard' ? (
+      <RemoveCard 
+        onConfirm={() => {
+          if (popup.cardToDelete) {
+            onCardDelete(popup.cardToDelete);
+          }
+          onClosePopup();
+        }}
+      />
+    ) : (
+      <>
+        {popup.card && (
+          <ImagePopup card={popup.card} onClose={onClosePopup} />
+        )}
+        {popup.Children}
+      </>
+    )}
+  </Popup>
+)}
+
+      {/* Sección de tarjetas */}
       <section className="elements">
         <div className="elements__grid">
-          {cards.map((cardElm) => {
-            return (
-              <Card
-                key={cardElm._id}
-                card={cardElm}
-                handleOpenPopup={onOpenPopup}
-                onCardLike={onCardLike}
-                isLiked={cardElm?.isLiked}
-                onCardDelete={onCardDelete}
-              />
-            );
-          })}
+          {cards.map((cardElm) => (
+            <Card
+              key={cardElm._id}
+              card={cardElm}
+              handleOpenPopup={onOpenPopup}
+              onCardLike={onCardLike}
+              isLiked={cardElm?.isLiked}
+              onCardDelete={(card) => onOpenPopup({
+                ...removeCardPopup,
+                cardToDelete: card
+              })}
+            />
+          ))}
         </div>
       </section>
     </main>
