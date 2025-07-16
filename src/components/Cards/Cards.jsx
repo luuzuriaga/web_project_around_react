@@ -41,7 +41,11 @@ export default function Card(props) {
   // Maneja el click en el botón de eliminar
   const handleDeleteClick = (e) => {
     e.stopPropagation();
-    onCardDelete(deletePopupConfig);
+      handleOpenPopup({  // Usa handleOpenPopup en lugar de onCardDelete
+    type: "removeCard",
+    title: "¿Estás seguro?",
+    cardToDelete: card
+  });
   };
 
   // Maneja el click en la imagen para ampliarla

@@ -121,7 +121,7 @@
 }
 .popup__submit-button:hover {
   cursor: pointer;
-  background-color: #eeeeeeec;
+  background-color: #2e2e2eec;
 }
 
 .popup__modal {
@@ -319,4 +319,21 @@
   .popup__title {
     align-items: center;
   }
+  .popup__button-confirm {
+  padding: 16px 120px;  /* Más ancho (de 30px a 80px) y un poco más alto */
+  background: #000000;  /* Fondo negro */
+  color: white;         /* Texto blanco */
+  border: none;
+  border-radius: 6px;   /* Bordes ligeramente más redondeados */
+  font-size: 16px;
+  font-weight: 500;     /* Texto seminegrita */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;       /* Para centrarlo */
+  margin: 20px auto 0;  /* Margen superior y centrado */
+  min-width: 200px;     /* Ancho mínimo garantizado */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
 }

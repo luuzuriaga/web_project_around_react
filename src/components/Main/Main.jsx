@@ -114,9 +114,8 @@ function Main(props) {
     {popup.type === 'removeCard' ? (
       <RemoveCard 
         onConfirm={() => {
-          if (popup.cardToDelete) {
-            onCardDelete(popup.cardToDelete);
-          }
+          // Esto llama a handleConfirmDelete en App.jsx a través de props
+          onCardDelete(popup.cardToDelete);
           onClosePopup();
         }}
       />

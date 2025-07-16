@@ -43,27 +43,20 @@ export default function App() {
     }
   }
 
-  function handleRequestDelete(card) {
-    setCardToDelete(card);
-    setPopup({
-      type: "removeCard",
-      title: "¿Estás seguro?",
-      cardToDelete: card  // Pasamos la tarjeta directamente al popup
-    });
-  }
+
 
   async function handleConfirmDelete() {
-    if (!cardToDelete) return;
-    
-    try {
-      await api.deleteCard(cardToDelete._id);
-      setCards(currentCards => 
-        currentCards.filter(card => card._id !== cardToDelete._id)
-      );
-      handleClosePopup();
-    } catch (error) {
-      console.error("Error al eliminar tarjeta:", error);
-    }
+  if (!popup?.cardToDelete) return;
+  
+  try {
+    await api.deleteCard(popup.cardToDelete._id);
+    setCards(currentCards => 
+      currentCards.filter(card => card._id !== popup.cardToDelete._id)
+    );
+    handleClosePopup();
+  } catch (error) {
+    console.error("Error al eliminar tarjeta:", error);
+  }
   }
 
   async function handleAddPlaceSubmit(newCardData) {
@@ -96,7 +89,7 @@ export default function App() {
           popup={popup}
           cards={cards}
           onCardLike={handleCardLike}
-          onCardDelete={handleRequestDelete}
+          onCardDelete={handleConfirmDelete}
           onAddPlaceSubmit={handleAddPlaceSubmit}
         />
       )}
