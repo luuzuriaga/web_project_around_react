@@ -21,6 +21,13 @@ Este proyecto es una versión React de la aplicación "Around the US", parte del
 
 ## 🛠️ Tecnologías Utilizadas
 
+![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=FFD62E)
+![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=flat&logo=javascript&logoColor=F7DF1E)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![Fetch%20API](https://img.shields.io/badge/Fetch%20API-FF6F00?style=flat&logo=javascript&logoColor=white)
+![Context%20API](https://img.shields.io/badge/Context%20API-61DAFB?style=flat&logo=react&logoColor=black)
+
 - **React** 18+ - Biblioteca de JavaScript para interfaces de usuario
 - **Vite** - Herramienta de construcción rápida
 - **JavaScript (ES6+)** - Lenguaje de programación
